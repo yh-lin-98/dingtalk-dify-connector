@@ -1,4 +1,6 @@
-# 把 Dify 中的 Agent 接入到钉钉 AI 助理中
+# DingTalk Dify 连接器
+
+实现钉钉 AI 助理和 Dify 的连接。
 
 通过 Dify 实现一个钉钉 AI 助理，采用钉钉 AI 助理平台提供的 Stream 直通模式，不用公网服务器和域名即可部署。
 
