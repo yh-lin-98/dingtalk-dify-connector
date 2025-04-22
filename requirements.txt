@@ -1,0 +1,5 @@
+dingtalk_stream
+websockets>11.0.2,<12.0
+requests==2.31.0
+loguru
+dify-client
