@@ -1,8 +1,12 @@
 # 把 Dify 中的 Agent 接入到钉钉 AI 助理中
 
-通过 Dify 实现一个钉钉助理，采用钉钉 AI 助理平台提供的 Stream 直通模式，不用公网服务器和域名，即可部署。
+通过 Dify 实现一个钉钉 AI 助理，采用钉钉 AI 助理平台提供的 Stream 直通模式，不用公网服务器和域名即可部署。
 
-## 效果对比
+5分钟集成一个 Dify Agent 到钉钉中。 
+
+## 效果展示
+
+将 Dify 中搭建的 Agent 接入到钉钉中：
 
 ![](assets/showcase.png)
 
