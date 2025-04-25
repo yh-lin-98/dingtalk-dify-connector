@@ -45,7 +45,7 @@ class Connector(dingtalk_stream.GraphHandler):
             'content': {
                 'templateId': self.MARKDOWN_TEMPLATE_ID,
                 'cardData': {
-                    'content': '正在思考中...',
+                    'content': '正在思考中',
                 }
             }
         }
