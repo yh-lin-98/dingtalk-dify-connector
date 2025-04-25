@@ -24,7 +24,7 @@ class Connector(dingtalk_stream.GraphHandler):
         payload = json.loads(request.body)
 
         # reply = self.get_dify_reply(payload['rawInput'], payload['unionId'])unionId
-        self.reply_prepare(payload['sessionWebhook'])
+        self.reply_prepare(payload['sessionWebhook'].replace('send', 'stream'))
         # self.reply_update(webhook,)
         # sleep(1)
         # self.reply_update(webhook, )
