@@ -66,7 +66,7 @@ class Connector(dingtalk_stream.GraphHandler):
             }
         }
         response = requests.post(webhook, json=payload)
-        self.logger.info('agent reply prepare, webhook={}, response={}, response.body={}', webhook, response, response.json())
+        self.logger.info('agent reply update, webhook={}, response={}, response.body={}', webhook, response, response.json())
 
     def reply_finish(self, webhook, content):
         payload = {
@@ -80,7 +80,7 @@ class Connector(dingtalk_stream.GraphHandler):
             }
         }
         response = requests.post(webhook, json=payload)
-        self.logger.info('agent reply prepare, webhook={}, response={}, response.body={}', webhook, response, response.json())
+        self.logger.info('agent reply finish, webhook={}, response={}, response.body={}', webhook, response, response.json())
 
 
     def get_success_response(self):
