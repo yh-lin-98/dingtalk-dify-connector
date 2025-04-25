@@ -1,3 +1,5 @@
+from time import sleep
+
 import requests
 
 from config import Config
@@ -28,11 +30,11 @@ class Connector(dingtalk_stream.GraphHandler):
         self.reply_prepare(session_webhook)
         self.reply_update(session_webhook, '1')
         sleep(1)
-        self.reply_update(session_webhook, '2')
+        self.reply_update(session_webhook, '12')
         sleep(1)
-        self.reply_update(session_webhook, '3')
+        self.reply_update(session_webhook, '123')
         sleep(1)
-        # self.reply_update(webhook, )
+        self.reply_finish(webhook, '1234')
         # self.reply_markdown(payload['sessionWebhook'], reply['answer'])
 
         response = self.get_success_response()
@@ -65,6 +67,21 @@ class Connector(dingtalk_stream.GraphHandler):
         }
         response = requests.post(webhook, json=payload)
         self.logger.info('agent reply prepare, webhook={}, response={}, response.body={}', webhook, response, response.json())
+
+    def reply_finish(self, webhook, content):
+        payload = {
+            'contentType': 'ai_card',
+            'stage': 'finish',
+            'content': {
+                'templateId': self.MARKDOWN_TEMPLATE_ID,
+                'cardData': {
+                    'content': content,
+                }
+            }
+        }
+        response = requests.post(webhook, json=payload)
+        self.logger.info('agent reply prepare, webhook={}, response={}, response.body={}', webhook, response, response.json())
+
 
     def get_success_response(self):
         response = dingtalk_stream.GraphResponse()
