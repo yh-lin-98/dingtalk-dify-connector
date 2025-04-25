@@ -10,7 +10,7 @@ from dify_client import CompletionClient, ChatClient
 
 
 class Connector(dingtalk_stream.GraphHandler):
-    MARKDOWN_TEMPLATE_ID = '1e6c3d7e-01b4-41fa-a5fb-793a45deb2ac.schema'
+    MARKDOWN_TEMPLATE_ID = 'd28e2ac5-fb34-4d93-94bc-cf5c580c2d4f.schema'
     # 区块卡片：d28e2ac5-fb34-4d93-94bc-cf5c580c2d4f.schema
     # 普通卡片：1e6c3d7e-01b4-41fa-a5fb-793a45deb2ac.schema
     def __init__(self):
