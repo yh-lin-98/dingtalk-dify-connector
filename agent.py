@@ -26,11 +26,11 @@ class Connector(dingtalk_stream.GraphHandler):
         # reply = self.get_dify_reply(payload['rawInput'], payload['unionId'])unionId
         session_webhook = payload['sessionWebhook'].replace('send', 'stream')
         self.reply_prepare(session_webhook)
-        self.reply_update(session_webhook)
+        self.reply_update(session_webhook, '1')
         sleep(1)
-        self.reply_update(session_webhook)
+        self.reply_update(session_webhook, '2')
         sleep(1)
-        self.reply_update(session_webhook)
+        self.reply_update(session_webhook, '3')
         sleep(1)
         # self.reply_update(webhook, )
         # self.reply_markdown(payload['sessionWebhook'], reply['answer'])
@@ -52,14 +52,14 @@ class Connector(dingtalk_stream.GraphHandler):
         response = requests.post(webhook, json=payload)
         self.logger.info('agent reply prepare, webhook={}, response={}, response.body={}', webhook, response, response.json())
 
-    def reply_update(self, webhook):
+    def reply_update(self, webhook, content):
         payload = {
             'contentType': 'ai_card',
             'stage': 'update',
             'content': {
                 'templateId': self.MARKDOWN_TEMPLATE_ID,
                 'cardData': {
-                    'content': '正在思考中',
+                    'content': content,
                 }
             }
         }
