@@ -23,12 +23,33 @@ class Connector(dingtalk_stream.GraphHandler):
                          request.body)
         payload = json.loads(request.body)
 
-        reply = self.get_dify_reply(payload['rawInput'], payload['unionId'])
-
-        self.reply_markdown(payload['sessionWebhook'], reply['answer'])
+        # reply = self.get_dify_reply(payload['rawInput'], payload['unionId'])unionId
+        self.reply_prepare(payload['sessionWebhook'])
+        # self.reply_update(webhook,)
+        # sleep(1)
+        # self.reply_update(webhook, )
+        # sleep(1)
+        # self.reply_update(webhook, )
+        # sleep(1)
+        # self.reply_update(webhook, )
+        # self.reply_markdown(payload['sessionWebhook'], reply['answer'])
 
         response = self.get_success_response()
         return dingtalk_stream.AckMessage.STATUS_OK, response.to_dict()
+
+    def reply_prepare(self, webhook):
+        payload = {
+            'contentType': 'ai_card',
+            'stage': 'prepare',
+            'content': {
+                'templateId': self.MARKDOWN_TEMPLATE_ID,
+                'cardData': {
+                    'content': '正在思考中...',
+                }
+            }
+        }
+        response = requests.post(webhook, json=payload)
+        self.logger.info('agent reply prepare, webhook={}, response={}, response.body={}', webhook, response, response.json())
 
     def get_success_response(self):
         response = dingtalk_stream.GraphResponse()
