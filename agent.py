@@ -34,7 +34,7 @@ class Connector(dingtalk_stream.GraphHandler):
         sleep(1)
         self.reply_update(session_webhook, '123')
         sleep(1)
-        self.reply_finish(webhook, '1234')
+        self.reply_finish(session_webhook, '1234')
         # self.reply_markdown(payload['sessionWebhook'], reply['answer'])
 
         response = self.get_success_response()
